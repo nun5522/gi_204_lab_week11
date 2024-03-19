@@ -17,6 +17,15 @@ public class Rotate : MonoBehaviour
         rb.angularVelocity = angularV;
     }
 
+    private void ShowInertia()
+    {
+        Debug.Log(this.name + "inertia: " + rb.inertiaTensor);
+
+        rb.angularVelocity = rb.inertiaTensor;
+
+        transform.localScale += new Vector3(Input.GetAxis("Horizontal"), 0, 0);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,5 +44,7 @@ public class Rotate : MonoBehaviour
         {
             RotateTorque();
         }
+
+        ShowInertia();
     }
 }
